@@ -1,0 +1,12 @@
+ebef9c6660424c99853fbcdbf7f4d035 *DESCRIPTION
+df390c53434517b304ac5db487184641 *NAMESPACE
+ec820d31f0d26f8186e5bebffbbfcdf3 *R/f.R
+347313fb31dc16cd14053e70f1be55ff *R/g.R
+60304b3fdbf22f1667056d123a6ff808 *data/Links79Pair.rda
+10f8ff0638d172f561d7252076f25859 *data/Links79PairExpanded.rda
+338281280918583634bf1616bd502c1d *man/Links79Pair.Rd
+dbdc73cbcd7099d62744fc047a7176db *man/Links79PairExpanded.Rd
+57ee344a3da3cfa7786c93eb2dd4c388 *man/NlsyLinks-package.Rd
+f21209888fec5a195cfb0361657984ed *man/f.Rd
+da9ec55d66f40d43e0531fc8fb0d14f8 *man/g.Rd
+ec632fead11f8a7cc75930a977200178 *tests/TestDatasets.R
