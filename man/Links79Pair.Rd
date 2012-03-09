@@ -13,7 +13,7 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
 }
 \usage{data(Links79Pair)}
 \format{
-  A data frame with 11,075 observations on the following 5 variables.
+  A data frame with 11,075 observations on the following 5 variables.  There is one row per unique pair of subjects, irrespective of order.
   \describe{
     \item{\code{ExtendedID}}{Identity of the extended family of the pair; it corresponds to the HHID in the NLSY79.  See References below.}
     \item{\code{Subject1Tag}}{Identity of the pair's first subject.  See Details below.}
@@ -33,10 +33,11 @@ MZ twins have \code{R}=1.  DZ twins and full-siblings have \code{R}=.5.  Half-si
 }
 \source{
 Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}).
+
+The internal version for the links is \code{Links2011V28}.
 }
 \references{
 The NLSY79 variable HHID (ie, R00001.49) is the source for the \code{ExtendedID} variable.  This is discussed at \url{http://www.nlsinfo.org/nlsy79/docs/79html/79text/hhcomp.htm}.
-
 ** We need an introduction reference/information for 'R'/Relatedness. **
 }
 \seealso{
