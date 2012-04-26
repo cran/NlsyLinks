@@ -9,7 +9,7 @@
 
 
 ###########
-context("Utilities")
+context("CreateSubjectTag")
 ###########
 test_that("CreateSubjectTag -Scenario 1", {
   ids <- c(1:10, 1:10)
@@ -65,6 +65,38 @@ test_that("CreateSubjectTag -With ExtraOutcomes79", {
   #cat(PrintVector(ExtraOutcomes79$SubjectTag))  
 })
 
+
+
+
+###########
+context("ExtractColumnExists")
+###########
+test_that("Nlsy79Gen2", {
+  filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"  
+  expectedColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
+  ds <- read.csv(filePathGen2)
+  expectedIndex <- 0
+  for( expectedColumnName in expectedColumNames ) {
+    expectedIndex <- expectedIndex + 1
+    expect_equal(VerifyColumnExists(ds, expectedColumnName), expected=expectedIndex, paste("The column '", expectedColumnName, "' should be found."))
+  }
+})
+
+###########
+context("Rename Nlsy Column")
+###########
+test_that("RenameNlsyColumn", {
+  filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
+  ds <- read.csv(filePathGen2)
+  originalColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
+  newColumnNames <- c("SubjectID", "MotherID", "Race", "Gender", "Yob", "GestationWeeks", "BirthWeightInOunces", "BirthLengthInInches")
+  for( columnIndex in seq_along(originalColumNames) ) {
+    ds <- RenameNlsyColumn(dataFrame=ds, nlsyRNumber=originalColumNames[columnIndex], newColumnName=newColumnNames[columnIndex])
+    #expect_equal(VerifyColumnExists(ds, expectedColumnName), expected=expectedIndex, paste("The column '", expectedColumnName, "' should be found."))
+  }
+  expect_equal(colnames(ds), expected=newColumnNames, info="The renamed columns should be correct.")
+  
+})
 
 # test_that("IncludeSubjectTag -Scenario 1", {
 #   ids <- c(1:10, 1:10)

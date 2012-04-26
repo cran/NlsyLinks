@@ -12,8 +12,8 @@ Utilities and kinship information for Behavior Genetics and Developmental resear
 \tabular{ll}{
 Package: \tab NlsyLinks\cr
 Type: \tab Package\cr
-Version: \tab 0.19\cr
-Date: \tab 2012-03-09\cr
+Version: \tab 1.0\cr
+Date: \tab 2012-04-26\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -22,7 +22,7 @@ An overview of how to use the package, including the most important functions
 \author{
 Will Beasley, Joe Rodgers, Kelly Meredith, and David Bard
 
-Maintainer: Will  Beasley <wibeasley@hotmail.com>
+Maintainer: Will Beasley <wibeasley@hotmail.com>
 }
 \references{
 This package's development was largely supported by the NIH Grant 1R01HD65865, "NLSY Kinship Links: Reliable and Valid Sibling Identification" (PI: Joe Rodgers)
@@ -46,10 +46,10 @@ Rodgers, J.L., Rowe, D.C., & Li, C. (1994). Beyond nature versus nurture: DF ana
 }
 
 \keyword{ package }
-\seealso{
+%\seealso{
 %~~ Optional links to other man pages, e.g. ~~
 %~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
+%}
 \note{
 This package considers both Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm}).
 }

@@ -59,9 +59,9 @@ The math and weight scores are duplicated from \code{\link{ExtraOutcomes79}}, bu
 \source{
 See \code{\link{Links79Pair}}.
 }
-\references{
+%\references{
 %%  ~~ possibly secondary sources and usages ~~
-}
+%}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 data(Links79PairExpanded)  #Load the dataset from the NlsyLinks package.
@@ -72,5 +72,7 @@ plot(jitter(olderR), jitter(youngerR))  #Scatterplot the siblings' responses.
 table(youngerR, olderR)  #Table of the relationship between the siblings' responses.
 ftable(youngerR, olderR, dnn=c("Younger's Version", "Older's Version")) #A formatted table.
 
+#write.csv(Links79PairExpanded, file='F:/Projects/RDev/NlsyLinksStaging/Links79PairExpanded.csv', 
+#  row.names=FALSE)
 }
 \keyword{datasets}

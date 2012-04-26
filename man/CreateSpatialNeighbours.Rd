@@ -39,7 +39,7 @@ Bivand, R., Pebesma, E., & Gomez-Rubio, V. (2008). \emph{Applied Spatial Data An
 
 }
 \author{
-%%  ~~who you are~~
+Will Beasley, David Bard
 }
 \note{
 Notice the British variant of 'neighbo\emph{u}rs'
@@ -56,5 +56,5 @@ Notice the British variant of 'neighbo\emph{u}rs'
 #Need something here
 % R documentation directory.
 }
-\keyword{ Spatial Analysis }
+\keyword{ spatial analysis }
 
