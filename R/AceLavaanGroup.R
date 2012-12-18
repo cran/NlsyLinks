@@ -5,7 +5,8 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
  
   rLevels <- sort(unique(dsClean$R))
   #These five lines enumerate the path coefficient labels to be inserted into the model statement.
-  rString <- stringr::str_c(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
+  #rString <- stringr::str_c(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
+  rString <- paste(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
   # aString <- str_c(rep("a", length(rLevels)), collapse=",") #The output is typically "a,a,a,a"
   # cString <- str_c(rep("c", length(rLevels)), collapse=",") #The output is typically "c,c,c,c"
   # eString <- str_c(rep("e", length(rLevels)), collapse=",") #The output is typically "e,e,e,e"
@@ -70,7 +71,7 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
   if( printOutput ) print(paste("Chi Square: ", lavaan::fitMeasures(fit)[["chisq"]])) #Print the Chi Square value
   
   #Extract the UNSCALED ACE components.
-  est <- parameterEstimates(fit)
+  est <- lavaan::parameterEstimates(fit)
   a2 <- est[est$label=="a2", "est"]
   c2 <- est[est$label=="c2", "est"]
   e2 <- est[est$label=="e2", "est"]

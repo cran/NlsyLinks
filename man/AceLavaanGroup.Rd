@@ -45,12 +45,15 @@ Currently, the variables in \code{dsClean} must be named \code{M1}, \code{M2} an
 Further ACE model details are discussed in our package's vignette (in the console, type \code{vignette("NlsyAce")}).
 }
 \examples{
-dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-oName_1 <- "MathStandardized_1" #Stands for Manifest1
-oName_2 <- "MathStandardized_2" #Stands for Manifest2
+library(NlsyLinks) #Load the package into the current R session.
+dsLinks <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only the Gen2 Siblings (ie, NLSY79-C subjects)
 
-dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
-dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary, oName_1, oName_2)
+oName_1 <- "MathStandardized_1" #Stands for Outcome1
+oName_2 <- "MathStandardized_2" #Stands for Outcome2
+
+dsGroupSummary <- RGroupSummary(dsLinks, oName_1, oName_2)
+dsClean <- CleanSemAceDataset(dsDirty=dsLinks, dsGroupSummary, oName_1, oName_2)
 
 ace <- AceLavaanGroup(dsClean)
 ace
@@ -58,7 +61,7 @@ ace
 #Should produce:
 # [1] "Results of ACE estimation: [show]"
 #     ASquared     CSquared     ESquared    CaseCount 
-#    0.6701032    0.1167060    0.2131907 8292.0000000 
+#    0.6681874    0.1181227    0.2136900 8390.0000000 
 
 library(lavaan) #Load the package to access methods of the lavaan class.
 GetDetails(ace)
