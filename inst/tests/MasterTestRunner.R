@@ -1,18 +1,20 @@
 rm(list=ls(all=TRUE)) #Clear all the variables before starting a new run.
 
 require(testthat)
-#test_dir("F:/Projects/RDev/NlsyLinksStaging/Static/tests")
+require(devtools)
+#test_dir("./Static/tests")
 #trace(ValidatePairLinks)
-isDevelopmentBox <- Sys.info()["nodename"] == "MICKEY"
-if( isDevelopmentBox ) {
-  directory <- "F:/Projects/RDev/NlsyLinksStaging"
-  directoryTests <- file.path(directory, "Static/inst/tests")
-  pathToBeIncorporated <- file.path(directory, "Content/ToBeIncorporated.R")
-}
-if( !isDevelopmentBox ) {
-  directory <- path.package("NlsyLinks")
+# isDevelopmentBox <- Sys.info()["nodename"] == "GIMBLE"
+# if( isDevelopmentBox ) {
+#   directory <- "D:/Projects/RDev/NlsyLinksStaging"
+#   directoryTests <- file.path(directory, "NlsyLinks/inst/tests")
+#   pathToBeIncorporated <- file.path(directory, "Content/ToBeIncorporated.R")
+# }
+# if( !isDevelopmentBox ) {
+  #directory <- path.package("NlsyLinks")
+  directory <- devtools::inst("NlsyLinks")
   directoryTests <- file.path(directory, "tests")
-}
+# }
 
 
 ClearMostVariables <- function( ) {
@@ -26,36 +28,35 @@ require(NlsyLinks)
 #source(pathToBeIncorporated)
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "AceLavaanGroupFixture.R"))
+test_file(file.path(directoryTests, "test.AceLavaanGroupFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "AcePreparationFixture.R"))
+test_file(file.path(directoryTests, "test.AcePreparationFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "AceDFFixture.R"))
+test_file(file.path(directoryTests, "test.AceDFFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "AceWrapperExceptions.R"))
+test_file(file.path(directoryTests, "test.AceWrapperExceptionFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "AceEstimationFixture.R"))
+test_file(file.path(directoryTests, "test.AceEstimationFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "CreatePairDatasetFixture.R"))
+test_file(file.path(directoryTests, "test.CreatePairDatasetFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "OutcomeDatasetFixture.R"))
+test_file(file.path(directoryTests, "test.OutcomeDatasetFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "CreatePairDatasetFixture.R"))
+test_file(file.path(directoryTests, "test.CreatePairDatasetFixture.R"))
 
 ClearMostVariables()
-test_file(file.path(directoryTests, "ReadCsvFixture.R"))
+test_file(file.path(directoryTests, "test.ReadCsvFixture.R"))
 
 ClearMostVariables()
 source(file.path(directoryTests, "ExpectedVectors.R"))
-test_file(file.path(directoryTests, "ColumnUtilitiesFixture.R"))
+test_file(file.path(directoryTests, "test.ColumnUtilitiesFixture.R"))
 
 #expect_that(print("sss"), prints_text("sss"))
 #expect_that(message("a"), shows_message("a"))
-

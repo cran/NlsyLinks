@@ -1,4 +1,32 @@
+##' Class \code{"AceEstimate"}
+##' 
+##' A class containing information about a single univariate ACE model.
+##' 
+##' @name AceEstimate-class
+##' @aliases AceEstimate-class getEstimate,AceEstimate-method
+##' initialize,AceEstimate-method print,AceEstimate-method
+##' show,AceEstimate-method GetDetails,AceEstimate-method
+##' @docType class
 
+##' @note The contents of the \code{Details} list depends on the underlying
+##' estimation routine.  For example, when the ACE model is estimated with a DF
+##' analysis, the output is an \code{lm} object, because the \code{lm} function
+##' was used (ie, the basical general linear model).  Alternatively, if the
+##' user specified the \code{lavaan} package should estimate that ACE model,
+##' the output is a \code{lavaan} object.
+##' @section Objects from the Class: Objects can be created by calls of the
+##' form:
+##' 
+##' \code{new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity,
+##' withinBounds, details, ...)}
+##' @keywords classes ACE
+##' @examples
+##' library(NlsyLinks) #Load the package into the current R session.
+##' 
+##' showClass("AceEstimate")
+##' est <- CreateAceEstimate(.5, .2, .3, 40)
+##' est 
+##' print(est)
 methods::setClass(Class="AceEstimate", 
   representation=representation(
     ASquared ="numeric",
@@ -42,10 +70,11 @@ CreateAceEstimate <- function( aSquared, cSquared, eSquared, caseCount, details=
   componentSum <- aSquared + cSquared + eSquared
   #print(class(caseCount))
   if( missing(caseCount) ) stop("The argument 'caseCount' is missing.")
-  #else if( class(caseCount) != "numeric" ) stop(paste("The argument 'caseCount' should be class 'numeric', but was '", class(caseCount), "'.", sep=""))
+  #else if( class(caseCount) != "numeric" ) stop(paste0("The argument 'caseCount' should be class 'numeric', but was '", class(caseCount), "'."))
   
   unity <- ( abs(componentSum - 1.0) < unityTolerance )
   withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
+#   withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) & (max( aSquared, cSquared, eSquared) <= 1)
   return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details) )  
 }
 
@@ -68,6 +97,23 @@ methods::setMethod(f="show", "AceEstimate", function( object ) {
 })
 
 methods::setGeneric("GetDetails", function( object ) { standardGeneric("GetDetails") })
+
+#' @name GetDetails-methods
+#' @aliases GetDetails-methods GetDetails AceEstimate-method
+#' @export GetDetails
+#' @exportMethod GetDetails
+#' @docType methods
+#' @title A generic function for extracting the \code{Details} slot of an object.
+#' 
+#' @description A generic function for extracting the \code{Details} slot of an \code{AceEstimation} object.
+# ' 
+#For examples see https://r-forge.r-project.org/scm/viewvc.php/pkg/lme4/man/lmList-class.Rd?view=markup&revision=2&root=lme4&pathrev=452
+# ' @section Methods
+# '  \describe{ 
+# '   \item{GetDetails}{\code{signature(object="AceEstimate")}: Extracts the \code{Details} slot of an \code{AceEstimation} object.} 
+# '  }   
+#' @author Will Beasley
+#' @keywords methods
 methods::setMethod(f="GetDetails", "AceEstimate", 
   definition=function( object ) {
     #print(str(object))
@@ -87,6 +133,24 @@ methods::setMethod(f="GetDetails", "AceEstimate",
 #   print(c(a=33, d=43))
 # })
 
+
+
+
+## ' Generic function for returning the contents from an \code{AceEstimate}
+## ' class.
+## ' 
+## ' Extract the values
+## ' 
+## ' 
+## ' @name GetEstimate-methods
+## ' @aliases GetEstimate-methods GetEstimate,AceEstimate-method
+## ' @docType methods
+## ' @section Methods: \describe{
+## ' 
+## ' \item{list("signature(object = \"AceEstimate\")")}{ %% ~~describe this
+## ' method here~~ } }
+## ' @author Will Beasley
+## ' @keywords methods
 # setGeneric("GetEstimate", function( object ) { standardGeneric("GetEstimate") })
 # setMethod(f="GetEstimate", "AceEstimate", 
 #           definition=function( object ) {

@@ -1,4 +1,3 @@
-require(stringr)
 options(digits=20)
 
 ###########
@@ -6,21 +5,21 @@ context("Lavaan")
 ###########
 test_that("AceLavaanGroup -MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  oName_1 <- "MathStandardized_1" #Stands for Manifest1
-  oName_2 <- "MathStandardized_2" #Stands for Manifest2
+  oName_S1 <- "MathStandardized_S1" #Stands for Manifest1
+  oName_S2 <- "MathStandardized_S2" #Stands for Manifest2
   dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   
-  dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
+  dsGroupSummary <- RGroupSummary(dsFull, oName_S1, oName_S2)
 #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_S1=oName_S1, oName_S2=oName_S2)
 #   dsClean
   
   ace <- AceLavaanGroup(dsClean)
   
-  expectedASquared <- 0.66726463036133044 #0.66818735332097090041 #0.670103215171409
-  expectedCSquared  <- 0.11880754807264618 #0.11812265118722645174 #0.11670604326754
-  expectedESquared <- 0.21392782156602341 #0.21368999549180262010 #0.213190741561051
-  expectedCaseCount <- 8390 #8292
+  expectedASquared <- 0.621097480948363
+  expectedCSquared  <- 0.21003564057019
+  expectedESquared <- 0.168866878481447
+  expectedCaseCount <- 8338 #8292
     
   expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
   expect_equal(object=ace@CSquared, expected=expectedCSquared, scale=1)
@@ -32,19 +31,19 @@ test_that("AceLavaanGroup -MathStandardized", {
 })
 test_that("AceLavaanGroup -HeightZGenderAge", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  oName_1 <- "HeightZGenderAge_1"
-  oName_2 <- "HeightZGenderAge_2"
+  oName_S1 <- "HeightZGenderAge_S1"
+  oName_S2 <- "HeightZGenderAge_S2"
   dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   
-  dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
+  dsGroupSummary <- RGroupSummary(dsFull, oName_S1, oName_S2)
   #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_S1=oName_S1, oName_S2=oName_S2)
   
   ace <- AceLavaanGroup(dsClean)
   
-  expectedASquared <- 0.785693984682088
-  expectedCSquared  <- 0.0320796864720722
-  expectedESquared <- 0.18222632884584
+  expectedASquared <- 0.785694185958244
+  expectedCSquared  <- 0.032079608460182
+  expectedESquared <- 0.182226205581574
   expectedCaseCount <- 5884
   
   expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
@@ -56,13 +55,13 @@ test_that("AceLavaanGroup -HeightZGenderAge", {
 })
 # test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
 #   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-#   oName_1 <- "WeightStandardizedForAge19To25_1"
-#   oName_2 <- "WeightStandardizedForAge19To25_2"
+#   oName_S1 <- "WeightStandardizedForAge19To25_S1"
+#   oName_S2 <- "WeightStandardizedForAge19To25_S2"
 #   dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
 #   
-#   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
+#   dsGroupSummary <- RGroupSummary(dsFull, oName_S1, oName_S2)
 # #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-#   dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
+#   dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_S1=oName_S1, oName_S2=oName_S2)
 #   
 #   ace <- AceLavaanGroup(dsClean)
 #   
@@ -78,7 +77,8 @@ test_that("AceLavaanGroup -HeightZGenderAge", {
 #   expect_true(object=slot(ace, "Unity"))
 #   expect_true(object=slot(ace, "WithinBounds"))
 # })
-# str_c(ace@ASquared)
-# str_c(ace@CSquared)
-# str_c(ace@ESquared)
-# str_c(ace@CaseCount)
+
+# stringr::str_c(ace@ASquared)
+# stringr::str_c(ace@CSquared)
+# stringr::str_c(ace@ESquared)
+# stringr::str_c(ace@CaseCount)

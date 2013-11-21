@@ -1,11 +1,25 @@
 
 # LoadPairFile <- function( ) {
-#   #directory <- "F:/Projects/Nls/Links2011/Analysis/Df/2012-01-13/"
-#   #pathLinks <- paste(directory, "Links2011V28.csv", sep="")
+#   #directory <- "F:/Projects/Nls/Links2011/Analysis/Df/2012-01-13"
+#   #pathLinks <- file.path(directory, "Links2011V28.csv")
 #   #dsLinks <- read.csv(pathLinks)
-#   data(Links79Pair)
 #   return( Links79Pair )
 # }
+fileNameGen2 <- "Gen2Birth.csv"
+
+# print(basename(normalizePath(".")))
+{
+  if( basename(normalizePath("."))=="NlsyLinks" ) {
+    directoryForExpectedVectors <- "./inst/tests"
+  }
+  else if( basename(normalizePath("."))=="tests" ) {
+    directoryForExpectedVectors <- "."
+  }
+  else {
+    stop("The working directory is not recognized by this test fixture.")
+  }
+}
+source(file.path(directoryForExpectedVectors, "ExpectedVectors.R"))
 
 
 ###########
@@ -55,14 +69,12 @@ test_that("CreateSubjectTag -Scenario 6", {
   expect_equivalent(expected, CreateSubjectTag(ids, generation))
 })
 
-test_that("CreateSubjectTag -With ExtraOutcomes79", {
-  data(ExtraOutcomes79)
-  
+test_that("CreateSubjectTag -With ExtraOutcomes79", {  
   actual <- CreateSubjectTag(subjectID=ExtraOutcomes79$SubjectID, generation=ExtraOutcomes79$Generation)
   expected <- ExpectedSubjectTags
   
   expect_equal(expected, actual)
-  #The PrintVector function is in "F:\Projects\RDev\NlsyLinksStaging\Content\DeveloperUtilities.R"
+  #The PrintVector function is in "./Content/DeveloperUtilities.R"
   #cat(PrintVector(ExtraOutcomes79$SubjectTag))  
 })
 
@@ -73,7 +85,8 @@ test_that("CreateSubjectTag -With ExtraOutcomes79", {
 context("ExtractColumnExists")
 ###########
 test_that("Nlsy79Gen2", {
-  filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"  
+  #filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"./Datasets/Gen2Birth.csv"  
+  filePathGen2 <- file.path(devtools::inst("NlsyLinks"), "extdata", "Gen2Birth.csv") #"./Datasets/Gen2Birth.csv"  
   expectedColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
   ds <- read.csv(filePathGen2)
   expectedIndex <- 0
@@ -87,7 +100,7 @@ test_that("Nlsy79Gen2", {
 context("Rename Nlsy Column")
 ###########
 test_that("RenameNlsyColumn", {
-  filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
+  filePathGen2 <- file.path(devtools::inst("NlsyLinks"), "extdata", "Gen2Birth.csv") #"./Datasets/Gen2Birth.csv"  
   ds <- read.csv(filePathGen2)
   originalColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
   newColumnNames <- c("SubjectID", "MotherID", "Race", "Gender", "Yob", "GestationWeeks", "BirthWeightInOunces", "BirthLengthInInches")
@@ -107,18 +120,18 @@ test_that("RenameNlsyColumn", {
 #   expect_error(ValidatePairLinks(dsLinks), "The linksPair file should have at least one row, but does not.")
 # })
 # 
-# test_that("Bad Subject1Tag", {
+# test_that("Bad SubjectTag_S1", {
 #   dsLinks <- LoadPairFile()
 #   expect_true(ValidatePairLinks(dsLinks))
-#   colnames(dsLinks)[colnames(dsLinks)=="Subject1Tag"] <- "Bad"
-#   expect_error(ValidatePairLinks(dsLinks), "The column 'Subject1Tag' should exist in the linksPair file, but does not.")
+#   colnames(dsLinks)[colnames(dsLinks)=="SubjectTag_S1"] <- "Bad"
+#   expect_error(ValidatePairLinks(dsLinks), "The column 'SubjectTag_S1' should exist in the linksPair file, but does not.")
 # })
 # 
-# test_that("Bad Subject2Tag", {
+# test_that("Bad SubjectTag_S2", {
 #   dsLinks <- LoadPairFile()
 #   expect_true(ValidatePairLinks(dsLinks))
-#   colnames(dsLinks)[colnames(dsLinks)=="Subject2Tag"] <- "Bad"
-#   expect_error(ValidatePairLinks(dsLinks), "The column 'Subject2Tag' should exist in the linksPair file, but does not.")
+#   colnames(dsLinks)[colnames(dsLinks)=="SubjectTag_S2"] <- "Bad"
+#   expect_error(ValidatePairLinks(dsLinks), "The column 'SubjectTag_S2' should exist in the linksPair file, but does not.")
 # })
 # 
 # test_that("Bad R", {
