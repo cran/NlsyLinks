@@ -1,4 +1,4 @@
-166ff9e19f5dec4459541cfcf147e1bc *DESCRIPTION
+81bc9f2e3633adecc2008c3c8142fcd4 *DESCRIPTION
 85460cab361f533f864d704c54b844ac *NAMESPACE
 f1228b3cba5f6ca5d43ae0ac38c1c806 *NEWS
 1f651d95adad0ad8db078f61ff02c799 *R/AceEstimate.R
@@ -30,13 +30,13 @@ e92ac5dcf8806efea4de8ea67aa45ecb *data/Links79Pair.rda
 57cdf811752cc9bf3c22e2e6502791b0 *data/SubjectDetails79.rda
 c5998cc2b76dec96b824f59d6420689b *inst/doc/Faq.R
 bfcdcfdeb7581d74f04d8293d406a249 *inst/doc/Faq.Rnw
-252c3ba75cac35256f544baa3357f6da *inst/doc/Faq.pdf
+cabe639c687452c9d1718182b2ac074f *inst/doc/Faq.pdf
 0d37d55a8ddf229ce9a5be51de0605af *inst/doc/NlsInvestigator.R
 85bb2de43107f59933958b959c339234 *inst/doc/NlsInvestigator.Rnw
-0d0bdef92f3c7a38395f136d4a721623 *inst/doc/NlsInvestigator.pdf
+f2e7557dd6969a531c61c60adad6b7e3 *inst/doc/NlsInvestigator.pdf
 56b45c0a169727e54a9f76e81990ae51 *inst/doc/NlsyAce.R
 4df424a7d4402781de116d4d70884cfb *inst/doc/NlsyAce.Rnw
-f72901319a5b3a54ef86949629163eeb *inst/doc/NlsyAce.pdf
+7e7f3065c15f2bdbaf2e38b4e5e5818b *inst/doc/NlsyAce.pdf
 9d9fa6c20408add292535b74015e84ee *inst/extdata/Gen1LifeCourse.csv
 e52b51324d91c650e2114848139a6111 *inst/extdata/Gen2Birth.csv
 2774e69a9b757e5419b19db6f24af817 *inst/tests/ExpectedVectors.R
