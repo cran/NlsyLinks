@@ -1,10 +1,12 @@
 #' @name CreateAceEstimate
 #' @export
+#' @importFrom methods new
 #' 
 #' @title Instantiate an \code{\link{AceEstimate-class}} object.
 #' @description Creates an instance of the \code{S4} class, \code{AceEstimate}  instantiating arguments set the parameter values estimated by the ACE model.
 #' 
-#' @usage CreateAceEstimate(aSquared, cSquared, eSquared, caseCount, details=list(), unityTolerance = 1e-11)
+#' @usage CreateAceEstimate(aSquared, cSquared, eSquared, caseCount, 
+#'   details=list(), unityTolerance = 1e-11)
 #' 
 #' @param aSquared The proportion of variability due to a shared genetic influence (typically represented as a^2, or sometimes h^2).
 #' @param cSquared The proportion of variability due to shared common environmental influence.
@@ -22,10 +24,12 @@
 CreateAceEstimate <- function( aSquared, cSquared, eSquared, caseCount, details=list(), unityTolerance=1e-11 ) {
   componentSum <- aSquared + cSquared + eSquared
   #print(class(caseCount))
-  if( missing(caseCount) ) stop("The argument 'caseCount' is missing.")
+  if( base::missing(caseCount) ) 
+    base::stop("The argument 'caseCount' is missing.")
+  
   #else if( class(caseCount) != "numeric" ) stop(paste0("The argument 'caseCount' should be class 'numeric', but was '", class(caseCount), "'."))
   
-  unity <- ( abs(componentSum - 1.0) < unityTolerance )
-  withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
+  unity <- ( base::abs(componentSum - 1.0) < unityTolerance )
+  withinBounds <- (0 <= base::min(aSquared, cSquared, eSquared)) && (base::max( aSquared, cSquared, eSquared) <= 1)
   return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details) )  
 }

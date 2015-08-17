@@ -35,10 +35,10 @@
 #' 
 #' Lawson, A.B (2013). \href{http://books.google.com/books?id=g7RJEZb1umwC}{\emph{Bayesian Disease Mapping: Hierarchical Modeling in Spatial Epidemiology, Second Edition}}. Boca Raton: CRC Press.
 #' 
-#' The \pkg{spdep} package documentation: \href{http://cran.r-project.org/web/packages/spdep/index.html}{spdep: Spatial dependence: weighting schemes, statistics and models}.
+#' The \pkg{spdep} package documentation: \href{http://cran.r-project.org/package=spdep}{spdep: Spatial dependence: weighting schemes, statistics and models}.
 #' 
 #' @author Will Beasley and  David Bard
-#' @note Notice the British variant of 'neighbo\emph{u}rs' is used, to be consistent with the \code{spatial.neighbour} class in the  \href{http://cran.r-project.org/web/packages/spdep/index.html}{\code{spdep}} package.
+#' @note Notice the British variant of 'neighbo\emph{u}rs' is used, to be consistent with the \code{spatial.neighbour} class in the  \href{http://cran.r-project.org/package=spdep}{\code{spdep}} package.
 #' @examples
 #' dsLinksAll <- Links79Pair
 #' dsLinksGen1Housemates <- dsLinksAll[dsLinksAll$RelationshipPath=="Gen1Housemates", ]
@@ -63,18 +63,17 @@
 #' #3442   610  6997    12    27 
 #' @keywords spatial analysis
 #' 
-CreateSpatialNeighbours <-
-function( linksPairsDoubleEntered )  {
+CreateSpatialNeighbours <- function( linksPairsDoubleEntered )  {
   ValidatePairLinks(linksPairsDoubleEntered)
   
-  ds <- subset(linksPairsDoubleEntered, select=c("SubjectTag_S1", "SubjectTag_S2", "R"))
-  colnames(ds)[colnames(ds) == "SubjectTag_S1"] <- "from"
-  colnames(ds)[colnames(ds) == "SubjectTag_S2"] <- "to"
-  colnames(ds)[colnames(ds) == "R"] <- "weight"
-#   summary(ds)
+  ds <- base::subset(linksPairsDoubleEntered, select=c("SubjectTag_S1", "SubjectTag_S2", "R"))
+  base::colnames(ds)[base::colnames(ds) == "SubjectTag_S1"] <- "from"
+  base::colnames(ds)[base::colnames(ds) == "SubjectTag_S2"] <- "to"
+  base::colnames(ds)[base::colnames(ds) == "R"] <- "weight"
+  # summary(ds)
   
-  class(ds) <- c("spatial.neighbour", class(ds))
-  attr(ds, "region.id") <- unique(ds$from)
-  attr(ds, "n") <- length(unique(ds$from)) 
+  base::class(ds) <- c("spatial.neighbour", base::class(ds))
+  base::attr(ds, "region.id") <- base::unique(ds$from)
+  base::attr(ds, "n") <- base::length(base::unique(ds$from)) 
   return( ds )
 }
