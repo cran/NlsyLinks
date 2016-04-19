@@ -1,3 +1,8 @@
+Version 2.0.5 (2016-03-17)
+------------------------------------------------------------------------------
+Updates:
+* Small updates to meet new testthat version.
+
 Version 2.0.1 (2015-08-16)
 ------------------------------------------------------------------------------
 Updates:
@@ -128,3 +133,8 @@ Version 0.10 (2012-01-16)
 ------------------------------------------------------------------------------
 * Initial submission to CRAN
 * Contains Nlsy79 Gen2 sibling links
+
+GitHub Commits and Releases
+------------------------------------------------------------------------------
+* For a detailed change log, please see https://github.com/LiveOak/NlsyLinks/commits/master.  
+* For a list of the major releases, please see https://github.com/LiveOak/NlsyLinks/releases.

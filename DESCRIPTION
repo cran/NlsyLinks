@@ -1,10 +1,10 @@
 Package: NlsyLinks
 Type: Package
 Title: Utilities and Kinship Information for Research with the NLSY
-Version: 2.0.1
-Date: 2015-08-17
-Author: Will Beasley, Joe Rodgers, David Bard, Michael Hunter, S. Mason Garrison, and Kelly
-    Meredith
+Version: 2.0.6
+Date: 2016-04-18
+Author: Will Beasley, Joe Rodgers, David Bard, Michael Hunter, S. Mason
+    Garrison, and Kelly Meredith
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 Description: Utilities and kinship information for behavior genetics and
     developmental research using the National Longitudinal Survey of Youth
@@ -20,7 +20,8 @@ Suggests: devtools, ggplot2, knitr, plyr, scales, testit, testthat,
 License: GPL
 LazyData: TRUE
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2015-08-18 00:18:13 UTC; Will
+Packaged: 2016-04-19 06:38:21 UTC; wibeasley
 Repository: CRAN
-Date/Publication: 2015-08-18 08:33:56
+Date/Publication: 2016-04-19 13:50:00
