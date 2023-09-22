@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="William Howard Beasley (Howard Live Oak LLC, Norman)" />
+<meta name="author" content="Joseph Lee Rodgers (Vanderbilt University, Nashville)" />
+<meta name="author" content="David Bard (University of Oklahoma Health Sciences Center, OKC)" />
+<meta name="author" content="Michael D. Hunter (Georgia Tech, Atlanta)" />
+
+<meta name="date" content="2023-09-21" />
+
+<title>FAQ for the NlsyLinks Package</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">FAQ for the NlsyLinks Package</h1>
+<h4 class="author">William Howard <a href="https://scholar.google.com/citations?user=ffsJTC0AAAAJ">Beasley</a>
+(Howard Live Oak LLC, Norman)</h4>
+<h4 class="author">Joseph Lee <a href="https://www.vanderbilt.edu/psychological_sciences/bio/joe-rodgers">Rodgers</a>
+(Vanderbilt University, Nashville)</h4>
+<h4 class="author">David <a href="https://medicine.ouhsc.edu/Academic-Departments/Pediatrics/Sections/Developmental-Behavioral-Pediatrics/Faculty/david-e-bard-phd">Bard</a>
+(University of Oklahoma Health Sciences Center, OKC)</h4>
+<h4 class="author">Michael D. <a href="https://acquia-prod.hhd.psu.edu/contact/michael-hunter">Hunter</a>
+(Georgia Tech, Atlanta)</h4>
+<h4 class="date">2023-09-21</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#getting-started" id="toc-getting-started">Getting
+Started</a></li>
+<li><a href="#gen1-and-gen2" id="toc-gen1-and-gen2">Gen1 and
+Gen2</a></li>
+<li><a href="#ambiguous-twins" id="toc-ambiguous-twins">Ambiguous
+twins</a></li>
+<li><a href="#ambiguous-siblings" id="toc-ambiguous-siblings">Ambiguous
+siblings</a></li>
+<li><a href="#retaining-vs.-dropping-the-ambiguous-twins-and-siblings" id="toc-retaining-vs.-dropping-the-ambiguous-twins-and-siblings">Retaining
+vs. dropping the ambiguous twins and siblings</a></li>
+<li><a href="#race-and-gender-variables" id="toc-race-and-gender-variables">Race and Gender Variables</a></li>
+<li><a href="#funding" id="toc-funding">Funding</a></li>
+</ul>
+</div>
+
+<div id="getting-started" class="section level1">
+<h1>Getting Started</h1>
+<p><strong>Where is a good place to start?</strong></p>
+<p>Welcome to the <code>NlsyLinks</code> package, which facilitates
+research with the <a href="https://www.nlsinfo.org/home.htm">NLSY</a>.
+The initial focus of the package was to assist behavior genetics, but it
+has been expanded to help with NLSY research in general.</p>
+<p>Researchers and grad students interested using the <a href="https://www.nlsinfo.org/">NLSY</a> for Behavior Genetics and
+family research, please start with our 2016 article, <a href="https://link.springer.com/article/10.1007/s10519-016-9785-3"><em>The
+NLSY Kinship Links: Using the NLSY79 and NLSY-Children Data to Conduct
+Genetically-Informed and Family-Oriented Research</em></a>.</p>
+<p>The current <a href="https://nlsy-links.github.io/NlsyLinks/articles/faq.html">FAQ</a>
+and the <a href="https://nlsy-links.github.io/NlsyLinks/articles/nlsy-ace.html">NLSY
+ACE vignette</a> provide overview, and the <a href="https://nlsy-links.github.io/NlsyLinks/">reference manual</a>
+describe the package’s syntax and functions; the documents are available
+on <a href="https://cran.r-project.org/package=NlsyLinks">CRAN</a>.</p>
+<p>Literature targeting general behavior genetics is listed in the
+appendix of the <a href="https://nlsy-links.github.io/NlsyLinks/articles/nlsy-ace.html">NLSY
+ACE vignette</a>. Furthermore, <a href="https://nlsy-links.github.io/NlsyLinks/articles/publications.html">the
+articles and books involving the NLSY kinship links</a> provide more
+specialized information.</p>
+</div>
+<div id="gen1-and-gen2" class="section level1">
+<h1>Gen1 and Gen2</h1>
+<p><strong>What does ‘Gen1’ and ‘Gen2’ mean?</strong></p>
+<p>This package considers both generations of the NLSY79. The first
+generation (<em>i.e.</em>, ‘Gen1’) refers to subjects in the original
+NLSY79 sample (<a href="https://www.nlsinfo.org/content/cohorts/nlsy79" class="uri">https://www.nlsinfo.org/content/cohorts/nlsy79</a>). The
+second generation (<em>i.e.</em>, `Gen2’) of subjects are the biological
+offspring of the original females -<em>i.e.</em>, those in the NLSY79
+Children and Young Adults sample (<a href="https://www.nlsinfo.org/content/cohorts/nlsy79-children" class="uri">https://www.nlsinfo.org/content/cohorts/nlsy79-children</a>).
+The NLSY97 is a third dataset that can be used for behavior genetic
+research (<a href="https://www.nlsinfo.org/content/cohorts/nlsy97" class="uri">https://www.nlsinfo.org/content/cohorts/nlsy97</a>),
+although this vignette focuses on the two generations in the NLSY79.</p>
+<p>Standard terminology is to refer second generation subjects as
+‘children’ when they are younger than age 15 (NSLYC), and as ‘young
+adults’ when they are 15 and older (NLSY79-YA); though they are the same
+respondents, different funding mechanisms and different survey items
+necessitate the distinction. This cohort is sometimes abbreviated as
+‘NLSY79-C’, ‘NLSY79C’, ‘NLSY-C’ or ‘NLSYC’. This packages uses ‘Gen2’ to
+refer to subjects of this generation, regardless of their age at the
+time of the survey.</p>
+</div>
+<div id="ambiguous-twins" class="section level1">
+<h1>Ambiguous twins</h1>
+<p><strong>What are “ambiguous twins”?</strong></p>
+<p>MZ twins share all of the genetic information (<em>i.e.</em>, <span class="math inline">\(R=1\)</span>), while DZ twins on average share
+half (<em>i.e.</em>, <span class="math inline">\(R=0.5\)</span>).
+Sometimes a sibling pair doesn’t have enough information for us to
+classify comfortably as either MZ or DZ. We assign these “ambiguous
+twins” <span class="math inline">\(R=.75\)</span>. Currently there are
+13 ambiguous twins in the NLSY79C sample.</p>
+<p>Of these pairs, all had close birthdays and were the same gender. 12
+pairs are ambiguous because the mother didn’t complete an NLSY survey
+since 1993; the first twin items were presented in 1994 (<em>e.g.</em>,
+<code>R48257.00</code>, and <code>R48260.00</code>). The mother of the
+13th pair (<em>i.e.</em>, subjects 864902 and 864903) simply avoided
+responding to the twin survey items.</p>
+<p>Occasionally the mother of twins provided conflicting evidence.
+Fortunately, these mother were consistent among their most recent
+responses. For instance, Subjects 392401 and 392402 were indicated DZ in
+1998, but MZ in 2000, 2002, and 2004. This pair was assigned <span class="math inline">\(R=1\)</span>.</p>
+<p>Gen2 ambiguous twins can be viewed with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">subset</span>(Links79Pair, RelationshipPath <span class="sc">==</span> <span class="st">&quot;Gen2Siblings&quot;</span> <span class="sc">&amp;</span> R <span class="sc">==</span> .<span class="dv">75</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt;       ExtendedID SubjectTag_S1 SubjectTag_S2    R RelationshipPath</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt; 5224        1460        146001        146002 0.75     Gen2Siblings</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; 15985       4431        443101        443102 0.75     Gen2Siblings</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; 20307       5658        565901        565902 0.75     Gen2Siblings</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; 24803       6639        663901        663902 0.75     Gen2Siblings</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; 26471       7111        711101        711102 0.75     Gen2Siblings</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; 29861       7913        791406        791407 0.75     Gen2Siblings</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; 36569       9596        959601        959602 0.75     Gen2Siblings</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; 37872      10012       1001201       1001202 0.75     Gen2Siblings</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; 40104      11191       1119103       1119104 0.75     Gen2Siblings</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; 40273      11486       1148601       1148602 0.75     Gen2Siblings</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt; 40358      11733       1173301       1173302 0.75     Gen2Siblings</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 40362      11739       1173901       1173902 0.75     Gen2Siblings</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 42791      12574       1257402       1257403 0.75     Gen2Siblings</span></span></code></pre></div>
+</div>
+<div id="ambiguous-siblings" class="section level1">
+<h1>Ambiguous siblings</h1>
+<p><strong>What are “ambiguous siblings”?</strong></p>
+<p>Similar to ambiguous twins, ambiguous siblings are sibling pairs that
+we cannot comfortably classify as either full-siblings (<span class="math inline">\(R=.5\)</span>) or half-siblings (<span class="math inline">\(R=.25\)</span>). All siblings in the NLSY79-C/YA
+dataset share the same biological mother, so for these pairs, the
+problem is reduced to determining if they share the same biological
+father. There are two typical reasons for classifying siblings as
+ambiguous: (a) the relevant items are missing responses, or (b) the
+existing responses conflict with each other.</p>
+<p>For instance, there are at least 0 Gen2 pairs where one sibling
+explicitly reported they shared a biological father, while the other
+sibling explicitly reported they did not. These subjects can be viewed
+with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>dsLinks <span class="ot">&lt;-</span> Links79PairExpanded</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>isGen2Sib <span class="ot">&lt;-</span> dsLinks<span class="sc">$</span>RelationshipPath <span class="sc">==</span> <span class="st">&quot;Gen2Siblings&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>olderFullYoungerHalf <span class="ot">&lt;-</span> (dsLinks<span class="sc">$</span>RExplicitOlderSibVersion <span class="sc">==</span> .<span class="dv">5</span> <span class="sc">&amp;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  dsLinks<span class="sc">$</span>RExplicitYoungerSibVersion <span class="sc">==</span> .<span class="dv">25</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>olderHalfYoungerFull <span class="ot">&lt;-</span> (dsLinks<span class="sc">$</span>RExplicitOlderSibVersion <span class="sc">==</span> .<span class="dv">25</span> <span class="sc">&amp;</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  dsLinks<span class="sc">$</span>RExplicitYoungerSibVersion <span class="sc">==</span> .<span class="dv">5</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>dsLinks[isGen2Sib <span class="sc">&amp;</span> (olderFullYoungerHalf <span class="sc">|</span> olderHalfYoungerFull), ]</span></code></pre></div>
+<p>Another example occurs when a subject reports they are unsure or if
+their own responses are inconsistent over the years. These 0 Gen2 pairs
+can be viewed with:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>dsLinks[ isGen2Sib <span class="sc">&amp;</span> (dsLinks<span class="sc">$</span>RExplicitOlderSibVersion<span class="sc">==</span>.<span class="dv">375</span> <span class="sc">|</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>     dsLinks<span class="sc">$</span>RExplicitYoungerSibVersion<span class="sc">==</span>.<span class="dv">375</span>), ]</span></code></pre></div>
+<p>When the one perspective provided inconclusive evidence of <span class="math inline">\(R\)</span>, we looked at other perspectives to
+resolve their relationship.</p>
+</div>
+<div id="retaining-vs.-dropping-the-ambiguous-twins-and-siblings" class="section level1">
+<h1>Retaining vs. dropping the ambiguous twins and siblings</h1>
+<p><strong>I am running ACE models with sibling pairs. Do you recommend
+including the pairs who are classified as <span class="math inline">\(R=.375\)</span> or <span class="math inline">\(R=.75\)</span>? Or should I exclude them from the
+analyses?</strong></p>
+<p>This important issue touches Behavior Genetic concepts and modeling
+pragmatics. However, this issue typically has an easier resolution than
+it used to. In the links we released 10 years ago, there were 3,079 Gen2
+pairs classified as ambiguous;in our current version, this has been
+reduced to 622. From one perspective, we are more likely to recommend
+dropping the ambiguous siblings because there are fewer of them (and
+therefore less potential gain by including them).</p>
+<p>Here’s another perspective. Usually if they’re missing the data
+necessary to determine the <span class="math inline">\(R\)</span> value,
+they’re also missing the phenotype, so they’d contribute very little to
+the analysis anyway. If there’s only a few in an <span class="math inline">\(R\)</span> group, it may not be worth including
+them. Virtually none of the ambiguous twins have phenotype values for
+both Gen2 siblings.</p>
+<p>Our advice to include/exclude an <span class="math inline">\(R\)</span> group also depends on the kind of
+analysis. Some analyses break up the <span class="math inline">\(R\)</span> values into separate categories (like
+multiple group SEMs). While some analyses treat <span class="math inline">\(R\)</span> like a continuous variable (like DF
+analysis, or SEMs with constraint/definition variables). If you’re
+running the former, we’re more likely to recommend dropping small <span class="math inline">\(R\)</span> groups, because they’re more likely to
+be estimated poorly (eg, the covariance matrix is more likely to
+misbehave). If you’re running the latter, the estimation is more robust.
+(Though the estimation’s robustness is a different issue that if that
+<span class="math inline">\(R\)</span> group is a good
+representation).</p>
+<p>We don’t recommend blindly dropping the ambiguous twins and siblings
+in every analysis. For each scenario, the group sizes and phenotypic
+measurement issues should be considered.</p>
+<p>We do recommend running a casual sensitivity test, at the very least.
+Run different models that include and exclude the small <span class="math inline">\(R\)</span> groups. Hopefully the estimates change
+in expected ways (<em>e.g.,</em>, including ambiguous siblings makes
+only a small difference) and you don’t have to dig deeper. For all
+analyses, inspect each <span class="math inline">\(R\)</span> group’s
+covariance matrix, especially with for the MZs, which typically is the
+smallest group.</p>
+</div>
+<div id="race-and-gender-variables" class="section level1">
+<h1>Race and Gender Variables</h1>
+<p><strong>Where are the race and gender variables?</strong></p>
+<p>Any NLSY dataset extracted using the <a href="https://nlsy-links.github.io/NlsyLinks/articles/nls-investigator.html">NLS
+Investigator</a> will include some mandatory fields, including race and
+gender. For Gen1, these are the <code>R02147.00</code> and
+<code>R02148.00</code> variables; for Gen2, they are the
+<code>C00053.00</code> and <code>C00054.00</code> variables.</p>
+<p>The <a href="https://nlsy-links.github.io/NlsyLinks/articles/nlsy-ace.html">NlsyAce
+vignette</a> describes how to incorporate extracts into for manipulation
+and analysis (<em>e.g.</em>, ``DF analysis with a univariate outcome
+from a Gen2 Extract’’). Those vignette example focused on incorporating
+outcomes. The FAQ entry focuses on race and gender.</p>
+<p>For Gen1, create a string variable that points to your extract
+(<em>e.g.</em>,
+<code>filePathOutcomes &lt;- &quot;C:/BGResearch/NlsExtracts/gen2-birth.csv&quot;</code>).
+For the code to work on your computer, this example will reference a
+file it knows exists; but make sure you replace this with your unique
+path.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(NlsyLinks)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>filePathOutcomes <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">path.package</span>(<span class="st">&quot;NlsyLinks&quot;</span>), <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gen1-life-course.csv&quot;</span>)</span></code></pre></div>
+<p>Next, pass that path to the <code>ReadCsvNlsy79Gen1()</code>
+function, which converts that CSV into an R <code>data.frame</code> and
+adds a few extra columns that will make NLSY research easier.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">ReadCsvNlsy79Gen1</span>(filePathOutcomes)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">summary</span>(dsDemographics)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;    SubjectTag        SubjectID       ExtendedID      Generation    R0214700    </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  Min.   :    100   Min.   :    1   Min.   :    1   Min.   :1    Min.   :1.000  </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  1st Qu.: 317225   1st Qu.: 3172   1st Qu.: 3171   1st Qu.:1    1st Qu.:2.000  </span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt;  Median : 634350   Median : 6344   Median : 6338   Median :1    Median :3.000  </span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  Mean   : 634350   Mean   : 6344   Mean   : 6337   Mean   :1    Mean   :2.434  </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.: 951475   3rd Qu.: 9515   3rd Qu.: 9505   3rd Qu.:1    3rd Qu.:3.000  </span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt;  Max.   :1268600   Max.   :12686   Max.   :12686   Max.   :1    Max.   :3.000  </span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;     R0214800        R9908100         R9908200       R9908300     </span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;  Min.   :1.000   Min.   :-998.0   Min.   :-998   Min.   :-998.0  </span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:1.000   1st Qu.:-998.0   1st Qu.:-998   1st Qu.:-998.0  </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;  Median :1.000   Median :  20.0   Median :  20   Median :-996.0  </span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;  Mean   :1.495   Mean   :-246.2   Mean   :-438   Mean   :-731.2  </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:2.000   3rd Qu.:  25.0   3rd Qu.:  27   3rd Qu.:  20.0  </span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;  Max.   :2.000   Max.   :  47.0   Max.   :  51   Max.   :  50.0  </span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt;     R9908600         R9909700         R9909800         R9910400     </span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt;  Min.   :-999.0   Min.   :-999.0   Min.   :-999.0   Min.   :-4.000  </span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:  16.0   1st Qu.:-998.0   1st Qu.:-998.0   1st Qu.:-4.000  </span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt;  Median :  21.0   Median :   9.0   Median :   0.0   Median :-4.000  </span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt;  Mean   :-193.8   Mean   :-328.8   Mean   :-355.9   Mean   :-1.929  </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:  25.0   3rd Qu.:  36.0   3rd Qu.:   1.0   3rd Qu.: 0.000  </span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;  Max.   :  51.0   Max.   : 416.0   Max.   :   1.0   Max.   : 9.000</span></span></code></pre></div>
+<p>You can see which variables were added or renamed by
+<code>ReadCsvNlsy79Gen1()</code> (<em>i.e.</em>, the first four), and
+which still retain the original names from the NLS Investigator
+(<em>i.e.</em>, the ones that start with `R’ and are followed by
+numbers). The first two original variables happen to correspond to
+Gen1’s race and gender. Rename to something more salient to you, such
+as</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">RenameNlsyColumn</span>(dsDemographics, <span class="st">&quot;R0214700&quot;</span>, <span class="st">&quot;Race&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">RenameNlsyColumn</span>(dsDemographics, <span class="st">&quot;R0214800&quot;</span>, <span class="st">&quot;Gender&quot;</span>)</span></code></pre></div>
+<p>Finally, consider converting the numeric variables to <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/factor.html">factor</a>
+variables so your code will be more readable.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># The official documentation calls this last level &quot;NON-BLACK, NON-HISPANIC&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>dsDemographics<span class="sc">$</span>Race <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">x =</span> dsDemographics<span class="sc">$</span>Race,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Hispanic&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;NBNH&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>dsDemographics<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="at">x =</span> dsDemographics<span class="sc">$</span>Gender,</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>)</span></code></pre></div>
+<p>For Gen2, race and gender can be incorporated with a similar
+approach. Remember to change <code>filePathOutcomes</code> to your
+desired location.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(NlsyLinks)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>filePathOutcomes <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">path.package</span>(<span class="st">&quot;NlsyLinks&quot;</span>), <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gen2-birth.csv&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">ReadCsvNlsy79Gen2</span>(filePathOutcomes) <span class="co"># Notice this function is for Gen2.</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># summary(dsDemographics) #Uncomment to see the summary</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">RenameNlsyColumn</span>(dsDemographics, <span class="st">&quot;C0005300&quot;</span>, <span class="st">&quot;Race&quot;</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>dsDemographics <span class="ot">&lt;-</span> <span class="fu">RenameNlsyColumn</span>(dsDemographics, <span class="st">&quot;C0005400&quot;</span>, <span class="st">&quot;Gender&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>dsDemographics<span class="sc">$</span>Race <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="at">x =</span> dsDemographics<span class="sc">$</span>Race,</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Hispanic&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;NBNH&quot;</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>)</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>dsDemographics<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  <span class="at">x =</span> dsDemographics<span class="sc">$</span>Gender,</span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>)</span></code></pre></div>
+<p>If you have another <code>data.frame</code> that needs to be merged
+with the demographic dataset, use <code>SubjectTag</code> as the key,
+because this variable is guaranteed to be unique when the subjects in
+both generations are in the same dataset. Supposed your other dataset is
+called <code>dsOutcomes</code>, the merging code would be</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>dsCombined <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> dsDemographics, <span class="at">y =</span> dsOutcomes, <span class="at">by =</span> <span class="st">&quot;SubjectTag&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Make sure that <code>dsOutcomes</code> also has the
+<code>SubjectTag</code> variable; this will happen automatically if it
+was read into R using the <code>ReadCsvNlsy79Gen1()</code> or
+<code>ReadCsvNlsy79Gen2()</code> functions. For more information about
+<code>SubjectTag</code>, please see the <code>Links79Pair</code> entry
+in the <a href="https://nlsy-links.github.io/NlsyLinks/">reference
+manual</a>.</p>
+</div>
+<div id="funding" class="section level1">
+<h1>Funding</h1>
+<p>This package’s development has been supported by two grants from NIH.
+The first, NIH Grant <a href="https://taggs.hhs.gov/Detail/AwardDetail?arg_awardNum=R01HD065865&amp;arg_ProgOfficeCode=50">1R01HD65865</a>,
+“NLSY Kinship Links: Reliable and Valid Sibling Identiﬁcation” (PI: Joe
+Rodgers; Vignette Construction by Will Beasley) supported the
+(virtually) final completion of the NLSY79 and NLSYC/YA kinship linking
+files. The second, NIH Grant <a href="https://reporter.nih.gov/project-details/9239744">1R01HD087395</a>,
+“New NLSY Kinship Links and Longitudinal/ Cross-Generational Models:
+Cognition and Fertility Research,” (PI: Joe Rodgers; Vignette
+Construction by Will Beasley) is supporting the development of the
+NLSY97 kinship links, and slight updates/extensions in the links for the
+two earlier data sources.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
