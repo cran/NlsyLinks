@@ -167,7 +167,7 @@ rGroupsToDrop <- c(1)
 dsGroupSummary[dsGroupSummary$R %in% rGroupsToDrop, "Included"] <- FALSE
 dsGroupSummary
 
-## ---- results='asis'------------------------------------------------------------------
+## ----results='asis'-------------------------------------------------------------------
 xt <- xtable(table(Links79Pair$RelationshipPath, dnn = c("Relationship Frequency")),
   caption = "Number of NLSY79 relationship, by `RelationshipPath`.(Recall that 'AuntNiece' also contains uncles and nephews.)"
 )

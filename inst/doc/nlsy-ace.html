@@ -16,7 +16,7 @@
 <meta name="author" content="Kelly Williams (Oklahoma City University, OKC)" />
 <meta name="author" content="Michael D. Hunter (Penn State)" />
 
-<meta name="date" content="2023-09-21" />
+<meta name="date" content="2024-10-07" />
 
 <title>ACE Models with the NLSY</title>
 
@@ -55,7 +55,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -353,7 +353,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 University, OKC)</h4>
 <h4 class="author">Michael D. <a href="https://acquia-prod.hhd.psu.edu/contact/michael-hunter">Hunter</a>
 (Penn State)</h4>
-<h4 class="date">2023-09-21</h4>
+<h4 class="date">2024-10-07</h4>
 
 
 <div id="TOC">
@@ -815,10 +815,10 @@ purposes.</p></li>
 <span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="co"># Step 11: Inspect the output further</span></span>
 <span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">library</span>(lavaan) <span class="co"># Load the package to access methods of the lavaan class.</span></span></code></pre></div>
-<pre><code>## This is lavaan 0.6-16
+<pre><code>## This is lavaan 0.6-19
 ## lavaan is FREE software! Please report any bugs.</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">GetDetails</span>(ace)</span></code></pre></div>
-<pre><code>## lavaan 0.6.16 ended normally after 39 iterations
+<pre><code>## lavaan 0.6-19 ended normally after 39 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -962,8 +962,8 @@ relationships.</p>
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Number of NLSY79 relationship, by `RelationshipPath`.(Recall that &#39;AuntNiece&#39; also contains uncles and nephews.)&quot;</span></span>
 <span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>)</span>
 <span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="fu">print.xtable</span>(xt, <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>), <span class="at">type =</span> <span class="st">&quot;html&quot;</span>)</span></code></pre></div>
-<!-- html table generated in R 4.3.1 by xtable 1.8-4 package -->
-<!-- Thu Sep 21 16:32:17 2023 -->
+<!-- html table generated in R 4.4.1 by xtable 1.8-4 package -->
+<!-- Mon Oct  7 15:13:45 2024 -->
 <table border="1">
 <caption align="bottom">
 Number of NLSY79 relationship, by <code>RelationshipPath</code>.(Recall
@@ -1231,7 +1231,7 @@ expand. But you’ll probably regret it.</p>
 Environment <span class="glyphicon glyphicon-plus-sign"></span>
 </summary>
 <pre><code>##  setting  value
-##  version  R version 4.3.1 (2023-06-16 ucrt)
+##  version  R version 4.4.1 (2024-06-14 ucrt)
 ##  os       Windows 11 x64 (build 22631)
 ##  system   x86_64, mingw32
 ##  ui       RTerm
@@ -1239,8 +1239,8 @@ Environment <span class="glyphicon glyphicon-plus-sign"></span>
 ##  collate  C
 ##  ctype    English_United States.utf8
 ##  tz       America/New_York
-##  date     2023-09-21
-##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</code></pre>
+##  date     2024-10-07
+##  pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</code></pre>
 <table>
 <thead>
 <tr>
@@ -1260,10 +1260,10 @@ date
 bslib
 </td>
 <td style="text-align:left;">
-0.5.1
+0.8.0
 </td>
 <td style="text-align:left;">
-2023-08-11
+2024-07-29
 </td>
 </tr>
 <tr>
@@ -1271,21 +1271,10 @@ bslib
 cachem
 </td>
 <td style="text-align:left;">
-1.0.8
+1.1.0
 </td>
 <td style="text-align:left;">
-2023-05-01
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-callr
-</td>
-<td style="text-align:left;">
-3.7.3
-</td>
-<td style="text-align:left;">
-2022-11-02
+2024-05-16
 </td>
 </tr>
 <tr>
@@ -1293,10 +1282,10 @@ callr
 cli
 </td>
 <td style="text-align:left;">
-3.6.1
+3.6.3
 </td>
 <td style="text-align:left;">
-2023-03-23
+2024-06-21
 </td>
 </tr>
 <tr>
@@ -1304,21 +1293,10 @@ cli
 colorspace
 </td>
 <td style="text-align:left;">
-2.1-0
+2.1-1
 </td>
 <td style="text-align:left;">
-2023-01-23
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-crayon
-</td>
-<td style="text-align:left;">
-1.5.2
-</td>
-<td style="text-align:left;">
-2022-09-29
+2024-07-26
 </td>
 </tr>
 <tr>
@@ -1337,10 +1315,10 @@ devtools
 digest
 </td>
 <td style="text-align:left;">
-0.6.33
+0.6.37
 </td>
 <td style="text-align:left;">
-2023-07-07
+2024-08-19
 </td>
 </tr>
 <tr>
@@ -1359,10 +1337,10 @@ ellipsis
 evaluate
 </td>
 <td style="text-align:left;">
-0.21
+1.0.0
 </td>
 <td style="text-align:left;">
-2023-05-05
+2024-09-17
 </td>
 </tr>
 <tr>
@@ -1370,10 +1348,10 @@ evaluate
 fastmap
 </td>
 <td style="text-align:left;">
-1.1.1
+1.2.0
 </td>
 <td style="text-align:left;">
-2023-02-24
+2024-05-15
 </td>
 </tr>
 <tr>
@@ -1381,10 +1359,10 @@ fastmap
 fs
 </td>
 <td style="text-align:left;">
-1.6.3
+1.6.4
 </td>
 <td style="text-align:left;">
-2023-07-20
+2024-04-25
 </td>
 </tr>
 <tr>
@@ -1392,10 +1370,10 @@ fs
 glue
 </td>
 <td style="text-align:left;">
-1.6.2
+1.7.0
 </td>
 <td style="text-align:left;">
-2022-02-24
+2024-01-09
 </td>
 </tr>
 <tr>
@@ -1403,10 +1381,10 @@ glue
 htmltools
 </td>
 <td style="text-align:left;">
-0.5.6
+0.5.8.1
 </td>
 <td style="text-align:left;">
-2023-08-10
+2024-04-04
 </td>
 </tr>
 <tr>
@@ -1414,10 +1392,10 @@ htmltools
 htmlwidgets
 </td>
 <td style="text-align:left;">
-1.6.2
+1.6.4
 </td>
 <td style="text-align:left;">
-2023-03-17
+2023-12-06
 </td>
 </tr>
 <tr>
@@ -1425,10 +1403,10 @@ htmlwidgets
 httpuv
 </td>
 <td style="text-align:left;">
-1.6.11
+1.6.15
 </td>
 <td style="text-align:left;">
-2023-05-11
+2024-03-26
 </td>
 </tr>
 <tr>
@@ -1447,10 +1425,10 @@ jquerylib
 jsonlite
 </td>
 <td style="text-align:left;">
-1.8.7
+1.8.9
 </td>
 <td style="text-align:left;">
-2023-06-29
+2024-09-20
 </td>
 </tr>
 <tr>
@@ -1458,10 +1436,10 @@ jsonlite
 knitr
 </td>
 <td style="text-align:left;">
-1.43
+1.48
 </td>
 <td style="text-align:left;">
-2023-05-25
+2024-07-07
 </td>
 </tr>
 <tr>
@@ -1469,10 +1447,10 @@ knitr
 later
 </td>
 <td style="text-align:left;">
-1.3.1
+1.3.2
 </td>
 <td style="text-align:left;">
-2023-05-02
+2023-12-06
 </td>
 </tr>
 <tr>
@@ -1480,10 +1458,10 @@ later
 lavaan
 </td>
 <td style="text-align:left;">
-0.6-16
+0.6-19
 </td>
 <td style="text-align:left;">
-2023-07-19
+2024-09-26
 </td>
 </tr>
 <tr>
@@ -1491,10 +1469,10 @@ lavaan
 lifecycle
 </td>
 <td style="text-align:left;">
-1.0.3
+1.0.4
 </td>
 <td style="text-align:left;">
-2022-10-07
+2023-11-07
 </td>
 </tr>
 <tr>
@@ -1513,10 +1491,10 @@ magrittr
 MASS
 </td>
 <td style="text-align:left;">
-7.3-60
+7.3-61
 </td>
 <td style="text-align:left;">
-2023-05-04
+2024-06-13
 </td>
 </tr>
 <tr>
@@ -1568,10 +1546,10 @@ mnormt
 munsell
 </td>
 <td style="text-align:left;">
-0.5.0
+0.5.1
 </td>
 <td style="text-align:left;">
-2018-06-12
+2024-04-01
 </td>
 </tr>
 <tr>
@@ -1579,10 +1557,10 @@ munsell
 NlsyLinks
 </td>
 <td style="text-align:left;">
-2.2.1
+2.2.2
 </td>
 <td style="text-align:left;">
-2023-09-21
+2024-10-07
 </td>
 </tr>
 <tr>
@@ -1601,10 +1579,10 @@ pbivnorm
 pkgbuild
 </td>
 <td style="text-align:left;">
-1.4.2
+1.4.4
 </td>
 <td style="text-align:left;">
-2023-06-26
+2024-03-17
 </td>
 </tr>
 <tr>
@@ -1612,32 +1590,10 @@ pkgbuild
 pkgload
 </td>
 <td style="text-align:left;">
-1.3.2.1
+1.4.0
 </td>
 <td style="text-align:left;">
-2023-07-08
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-prettyunits
-</td>
-<td style="text-align:left;">
-1.1.1
-</td>
-<td style="text-align:left;">
-2020-01-24
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-processx
-</td>
-<td style="text-align:left;">
-3.8.2
-</td>
-<td style="text-align:left;">
-2023-06-30
+2024-06-28
 </td>
 </tr>
 <tr>
@@ -1645,10 +1601,10 @@ processx
 profvis
 </td>
 <td style="text-align:left;">
-0.3.8
+0.4.0
 </td>
 <td style="text-align:left;">
-2023-05-02
+2024-09-20
 </td>
 </tr>
 <tr>
@@ -1656,21 +1612,10 @@ profvis
 promises
 </td>
 <td style="text-align:left;">
-1.2.1
+1.3.0
 </td>
 <td style="text-align:left;">
-2023-08-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ps
-</td>
-<td style="text-align:left;">
-1.7.5
-</td>
-<td style="text-align:left;">
-2023-04-18
+2024-04-05
 </td>
 </tr>
 <tr>
@@ -1711,10 +1656,10 @@ R6
 Rcpp
 </td>
 <td style="text-align:left;">
-1.0.11
+1.0.13
 </td>
 <td style="text-align:left;">
-2023-07-06
+2024-07-17
 </td>
 </tr>
 <tr>
@@ -1722,10 +1667,10 @@ Rcpp
 remotes
 </td>
 <td style="text-align:left;">
-2.4.2.1
+2.5.0
 </td>
 <td style="text-align:left;">
-2023-07-18
+2024-03-17
 </td>
 </tr>
 <tr>
@@ -1733,10 +1678,10 @@ remotes
 rlang
 </td>
 <td style="text-align:left;">
-1.1.1
+1.1.4
 </td>
 <td style="text-align:left;">
-2023-04-28
+2024-06-04
 </td>
 </tr>
 <tr>
@@ -1744,10 +1689,10 @@ rlang
 rmarkdown
 </td>
 <td style="text-align:left;">
-2.24
+2.28
 </td>
 <td style="text-align:left;">
-2023-08-14
+2024-08-17
 </td>
 </tr>
 <tr>
@@ -1755,10 +1700,10 @@ rmarkdown
 rstudioapi
 </td>
 <td style="text-align:left;">
-0.15.0
+0.16.0
 </td>
 <td style="text-align:left;">
-2023-07-07
+2024-03-24
 </td>
 </tr>
 <tr>
@@ -1766,10 +1711,10 @@ rstudioapi
 sass
 </td>
 <td style="text-align:left;">
-0.4.7
+0.4.9
 </td>
 <td style="text-align:left;">
-2023-07-15
+2024-03-15
 </td>
 </tr>
 <tr>
@@ -1777,10 +1722,10 @@ sass
 scales
 </td>
 <td style="text-align:left;">
-1.2.1
+1.3.0
 </td>
 <td style="text-align:left;">
-2022-08-20
+2023-11-28
 </td>
 </tr>
 <tr>
@@ -1799,32 +1744,10 @@ sessioninfo
 shiny
 </td>
 <td style="text-align:left;">
-1.7.5
+1.9.1
 </td>
 <td style="text-align:left;">
-2023-08-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-stringi
-</td>
-<td style="text-align:left;">
-1.7.12
-</td>
-<td style="text-align:left;">
-2023-01-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-stringr
-</td>
-<td style="text-align:left;">
-1.5.0
-</td>
-<td style="text-align:left;">
-2022-12-02
+2024-08-01
 </td>
 </tr>
 <tr>
@@ -1843,10 +1766,10 @@ urlchecker
 usethis
 </td>
 <td style="text-align:left;">
-2.2.2
+3.0.0
 </td>
 <td style="text-align:left;">
-2023-07-06
+2024-07-29
 </td>
 </tr>
 <tr>
@@ -1854,10 +1777,10 @@ usethis
 vctrs
 </td>
 <td style="text-align:left;">
-0.6.3
+0.6.5
 </td>
 <td style="text-align:left;">
-2023-06-14
+2023-12-01
 </td>
 </tr>
 <tr>
@@ -1865,10 +1788,10 @@ vctrs
 xfun
 </td>
 <td style="text-align:left;">
-0.40
+0.47
 </td>
 <td style="text-align:left;">
-2023-08-09
+2024-08-17
 </td>
 </tr>
 <tr>
@@ -1887,10 +1810,10 @@ xtable
 yaml
 </td>
 <td style="text-align:left;">
-2.3.7
+2.3.10
 </td>
 <td style="text-align:left;">
-2023-01-23
+2024-07-26
 </td>
 </tr>
 </tbody>

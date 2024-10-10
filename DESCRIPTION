@@ -1,7 +1,7 @@
 Package: NlsyLinks
 Type: Package
 Title: Utilities and Kinship Information for Research with the NLSY
-Version: 2.2.1
+Version: 2.2.2
 Authors@R: c(
     person("William Howard", "Beasley", role = c("aut"), email = "wibeasley@hotmail.com", comment = c(ORCID = "0000-0002-5613-5006")), 
     person("Joseph Lee", "Rodgers", role = "ctb", comment = c(ORCID = "0000-0002-8615-6713")),
@@ -24,11 +24,11 @@ License: GPL
 LazyData: TRUE
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Language: en-US
 Config/testthat/edition: 2
 NeedsCompilation: no
-Packaged: 2023-09-21 20:32:22 UTC; smaso
+Packaged: 2024-10-07 19:13:53 UTC; smaso
 Author: William Howard Beasley [aut] (<https://orcid.org/0000-0002-5613-5006>),
   Joseph Lee Rodgers [ctb] (<https://orcid.org/0000-0002-8615-6713>),
   David Bard [ctb],
@@ -38,4 +38,4 @@ Author: William Howard Beasley [aut] (<https://orcid.org/0000-0002-5613-5006>),
   S. Mason Garrison [aut, cre] (<https://orcid.org/0000-0002-4804-6003>)
 Maintainer: S. Mason Garrison <garrissm@wfu.edu>
 Repository: CRAN
-Date/Publication: 2023-09-22 07:50:05 UTC
+Date/Publication: 2024-10-10 15:00:18 UTC

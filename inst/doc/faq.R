@@ -9,7 +9,7 @@ library(NlsyLinks)
 ## -----------------------------------------------------------------------------
 subset(Links79Pair, RelationshipPath == "Gen2Siblings" & R == .75)
 
-## ---- results='hide'----------------------------------------------------------
+## ----results='hide'-----------------------------------------------------------
 dsLinks <- Links79PairExpanded
 isGen2Sib <- dsLinks$RelationshipPath == "Gen2Siblings"
 
@@ -67,6 +67,6 @@ dsDemographics$Gender <- factor(
   labels = c("Male", "Female")
 )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  dsCombined <- merge(x = dsDemographics, y = dsOutcomes, by = "SubjectTag", all = TRUE)
 
